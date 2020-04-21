@@ -24,4 +24,8 @@ public interface UserInfService {
     void add(UserInf user);
 
     EasyUIDataGrid findPage(Integer page, UserInf userInf);
+
+    UserInf getUserById(Integer id);
+
+    void update(UserInf userInf);
 }

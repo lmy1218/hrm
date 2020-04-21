@@ -85,5 +85,18 @@ public class UserInfServiceImpl implements UserInfService {
         return grid;
     }
 
+    @Override
+    public UserInf getUserById(Integer id) {
+        return userInfMapper.getOneById(id);
+    }
+
+    @Override
+    @Transactional
+    public void update(UserInf userInf) {
+        userInf.setCreatedate(new Date());
+        userInfMapper.update(userInf);
+        return ;
+    }
+
 
 }

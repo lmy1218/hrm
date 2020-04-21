@@ -13,6 +13,7 @@ import com.lmy.hrm.vo.EasyUIDataGrid;
 import com.lmy.hrm.vo.PageModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -57,8 +58,10 @@ public class UserController {
 
 
     @RequestMapping("viewUser.action")
-    public String edit(Integer id) {
+    public String edit(Integer id, Model model) {
 
+        UserInf userInf = userInfServiceImpl.getUserById(id);
+        model.addAttribute("user", userInf);
         return "user/useredit";
     }
 
@@ -86,6 +89,13 @@ public class UserController {
     public String add() {
 
         return "user/useradd";
+    }
+
+
+    @RequestMapping("userupdate.action")
+    public String update(UserInf userInf) {
+        userInfServiceImpl.update(userInf);
+        return "redirect:/userlist.action";
     }
 
 }

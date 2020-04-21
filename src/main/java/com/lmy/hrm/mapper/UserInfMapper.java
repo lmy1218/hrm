@@ -49,4 +49,10 @@ public interface UserInfMapper {
                     "    </script>"
     })
     List<UserInf> getAllByExample(@Param("loginname") String loginname, @Param("username") String username, @Param("status") Integer status);
+
+    @Select("select * from user_inf where id = #{id}")
+    UserInf getOneById(@Param("id") Integer id);
+
+    @Update("update user_inf set username = #{username}, password = #{password}, status =  #{status}, createdate = #{createdate}, loginname = #{loginname} where id = #{id}")
+    void update(UserInf userInf);
 }
