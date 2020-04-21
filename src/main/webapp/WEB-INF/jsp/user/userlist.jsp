@@ -115,8 +115,7 @@
 				src="${ctx}/images/main_locright.gif" width="15" height="32"></td>
 		</tr>
 	</table>
-	<form name="userform" method="post" id="userform"
-		action="${ctx}/queryUser.action">
+	<form name="userform" method="post" id="userform" action="${ctx}/queryUser.action">
 		
 		<!-- 配置pageIndex的隐藏域 -->
 		<input type="hidden" name="pageIndex" value="${pageModel.pageIndex}" id="pageIndex">
@@ -171,7 +170,7 @@
 								<td>${user.password }</td>
 								<td>${user.username }</td>
 								<td>${user.status }</td>
-								<td><f:formatDate value="${user.createDate}" type="date"
+								<td><f:formatDate value="${user.createdate}" type="date"
 										dateStyle="long" /></td>
 								<td align="center" width="40px;"><a
 									href="${ctx}/viewUser.action?id=${user.id}"> <img
@@ -184,7 +183,7 @@
 			<!-- 分页标签 -->
 			<tr valign="top">
 				<td align="center" class="font3">
-				<%@include file="/page/page.jsp"%>
+				<%@include file="../../page/page.jsp"%>
 				</td>
 			</tr>
 		</table>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctx" value="${pageContext.request.contextPath }"></c:set>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -45,7 +46,7 @@
 					<tr>
 						<td class="font3 fftd">
 							创建时间：<font color="red" size="2">
-							<f:formatDate value="${sessionScope.user_session.createDate}" 
+							<f:formatDate value="${sessionScope.user_session.createdate}" 
 								type="date" dateStyle="long"/>
 								</font>
 						</td>
