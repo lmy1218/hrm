@@ -57,22 +57,13 @@ public class UserController {
     }
 
 
-    @RequestMapping("viewUser.action")
-    public String edit(Integer id, Model model) {
-
-        UserInf userInf = userInfServiceImpl.getUserById(id);
-        model.addAttribute("user", userInf);
-        return "user/useredit";
-    }
 
 
     @RequestMapping("userdel.action")
-    public String delete(@RequestParam("userIds") List<Integer> userIds, HttpServletRequest request) {
+    public String delete(@RequestParam("userIds") List<Integer> userIds) {
 
-        System.out.println(userIds.toString());
         userInfServiceImpl.delete(userIds);
-        request.setAttribute("userlist", userInfServiceImpl.findAll());
-        return "user/userlist";
+        return "redirect:userlist.action";
     }
 
 
@@ -91,6 +82,14 @@ public class UserController {
         return "user/useradd";
     }
 
+    // 跳转到修改页面，并回显数据
+    @RequestMapping("viewUser.action")
+    public String edit(Integer id, Model model) {
+
+        UserInf userInf = userInfServiceImpl.getUserById(id);
+        model.addAttribute("user", userInf);
+        return "user/useredit";
+    }
 
     @RequestMapping("userupdate.action")
     public String update(UserInf userInf) {

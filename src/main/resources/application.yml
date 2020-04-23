@@ -5,24 +5,17 @@ spring:
     password: 121891
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
-  resources:
-      chain:
-        strategy:
-          content:
-            enabled: true
-            paths: /**
-      static-locations: classpath*:/resources, classpath*:/webapp
 
   mvc:
     view:
       prefix: /WEB-INF/jsp/
       suffix: .jsp
 mybatis:
-  mapper-locations: classpath:com/lmy/hrm/mapper/*.xml
+  mapper-locations: classpath:mapping/*.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true
-  type-aliases-package: com.lmy.hrm.entity
+  type-aliases-package: com.lmy.hrm.mapper
 
 server:
   port: 8888
