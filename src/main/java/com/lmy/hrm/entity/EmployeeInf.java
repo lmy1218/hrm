@@ -20,7 +20,6 @@ import java.util.Date;
  **/
 @Data
 public class EmployeeInf implements Serializable {
-
     private Integer id;
     private Integer deptId;
     private Integer jobId;

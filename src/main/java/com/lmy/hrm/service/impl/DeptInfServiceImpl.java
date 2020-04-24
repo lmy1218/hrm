@@ -78,4 +78,9 @@ public class DeptInfServiceImpl implements DepInfService {
         }
 
     }
+
+    @Override
+    public List<DeptInf> findAll() {
+        return deptInfMapper.getAll();
+    }
 }

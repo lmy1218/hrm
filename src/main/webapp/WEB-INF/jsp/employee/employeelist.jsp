@@ -20,7 +20,7 @@
 	<script src="${ctx}/js/ligerUI/js/core/base.js" type="text/javascript"></script>
 	<script src="${ctx}/js/ligerUI/js/plugins/ligerDrag.js" type="text/javascript"></script> 
 	<script src="${ctx}/js/ligerUI/js/plugins/ligerDialog.js" type="text/javascript"></script>
-	<script src="${ctx}/js/ligerUI/js/plugins/ligerResizable.jss" type="text/javascript"></script>
+	<script src="${ctx}/js/ligerUI/js/plugins/ligerResizable.js" type="text/javascript"></script>
 	<link href="${ctx}/css/pager.css" type="text/css" rel="stylesheet" />
 
 	<script type="text/javascript">
@@ -57,14 +57,14 @@
 	       // this是checkAll  this.checked是true
 	       // 所有数据行的选中状态与全选的状态一致
 	       boxs.attr("checked",this.checked);
-	   })
+	   });
 	   
 	    /** 给数据行绑定鼠标覆盖以及鼠标移开事件  */
 	    $("tr[id^='data_']").hover(function(){
 	    	$(this).css("backgroundColor","#eeccff");
 	    },function(){
 	    	$(this).css("backgroundColor","#ffffff");
-	    })
+	    });
 
 	    	
  	   /** 删除员工绑定点击事件 */
@@ -82,7 +82,7 @@
  	   $("#query").click(function(){
  		  	$("#empform").attr("action", "${ctx}/employeelist.action");
  		 	$("#empform").submit();
- 	   })
+ 	   });
  	   
     })
 	</script>
@@ -111,7 +111,7 @@
 					  <tr>
 					    <td class="font3">
 					    	职位：
-							    <select name="job_id" style="width:143px;">
+							    <select name="jobId" style="width:143px;">
 					    			<option value="">--请选择职位--</option>
 					    			<c:forEach items="${requestScope.jobList}" var="job">
 					    				<c:choose>
@@ -137,7 +137,7 @@
 					    			<option value="2">女</option>
 					    		</select>
 					    	手机：<input type="text" name="phone">
-					    	所属部门：<select  name="dept_id" style="width:100px;">
+					    	所属部门：<select  name="deptId" style="width:100px;">
 								   <option value="">--部门选择--</option>
 								   <c:forEach items="${requestScope.deptList }" var="dept">
 								   		<c:choose>
@@ -181,7 +181,7 @@
 			</tr>
 			<c:forEach items="${requestScope.employeelist}" var="employee" varStatus="stat">
 				<tr id="data_${stat.index}" class="main_trbg" align="center">
-					<td><input type="checkbox" id="box_${stat.index}" value="${employee.id}"></td>
+					<td><input type="checkbox" id="box_${stat.index}" name="employeeIds" value="${employee.id}"></td>
 					 <td>${employee.name }</td>
 					  <td>
 					        <c:choose>
@@ -210,7 +210,7 @@
 	  </tr>
 	  <!-- 分页标签 -->
 	  <tr valign="top"><td align="center" class="font3">
-	  	<%@include file="/page/page.jsp"%>
+	  	<%@include file="../../page/page.jsp"%>
 	  </td></tr>
 	</table>
 	</form>

@@ -11,6 +11,7 @@ import com.lmy.hrm.entity.DeptInf;
 import com.lmy.hrm.service.DepInfService;
 import com.lmy.hrm.vo.EasyUIDataGrid;
 import com.lmy.hrm.vo.PageModel;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,7 +37,6 @@ public class DeptController {
     @RequestMapping("dept/selectDept")
     public String selectDept(@RequestParam(value = "pageIndex", defaultValue = "1") Integer pageIndex, String name,
                        HttpServletRequest request) {
-
         EasyUIDataGrid page = depInfServiceImpl.findPage(pageIndex, name);
         PageModel pageModel = new PageModel();
         pageModel.setPageIndex(pageIndex);

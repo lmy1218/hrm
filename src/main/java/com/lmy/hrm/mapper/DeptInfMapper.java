@@ -39,4 +39,7 @@ public interface DeptInfMapper {
 
     @Delete("delete from dept_inf where id = #{deptId}")
     void delete(@Param("deptId") Integer deptId);
+
+    @Select("select * from dept_inf")
+    List<DeptInf> getAll();
 }

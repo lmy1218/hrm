@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 	<head>
@@ -18,7 +19,7 @@
 	<script src="${ctx}/js/ligerUI/js/core/base.js" type="text/javascript"></script>
 	<script src="${ctx}/js/ligerUI/js/plugins/ligerDrag.js" type="text/javascript"></script> 
 	<script src="${ctx}/js/ligerUI/js/plugins/ligerDialog.js" type="text/javascript"></script>
-	<script src="${ctx}/js/ligerUI/js/plugins/ligerResizable.jss" type="text/javascript"></script>
+	<script src="${ctx}/js/ligerUI/js/plugins/ligerResizable.js" type="text/javascript"></script>
 	<link href="${ctx}/css/pager.css" type="text/css" rel="stylesheet" />
 	<script language="javascript" type="text/javascript" src="${ctx }/js/My97DatePicker/WdatePicker.js"></script>
 	<script type="text/javascript">
@@ -39,7 +40,7 @@
 					    async:  true , // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
 					    // 请求成功后的回调函数。
 					   success :function(data){
-						   if(!data)
+						   if(data.result == "false")
 						   {
 							   $("#cardmsgid").html('身份证已经存在，请重新输入！');
 						   }else
@@ -162,8 +163,6 @@
   <tr valign="top">
     <td>
     	 <form action="${ctx}/employee/addEmployee" id="employeeForm" method="post">
-		 	<!-- 隐藏表单，flag表示添加标记 -->
-    	 	<input type="hidden" name="flag" value="2">
 		  <table width="100%" border="0" cellpadding="0" cellspacing="10" class="main_tab">
 		    <tr><td class="font3 fftd">
 		    	<table>
@@ -179,7 +178,7 @@
 					    			<option value="2">女</option>
 					    		</select></td>
 		    			<td class="font3 fftd">职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位：
-		    			 <select name="job_id" style="width:143px;">
+		    			 <select name="jobId" style="width:143px;">
 					    			<option value="0">--请选择职位--</option>
 					    			<c:forEach items="${requestScope.jobList }" var="job">
 					    				<option value="${job.id }">${job.name }</option>
@@ -237,7 +236,7 @@
 				<td class="font3 fftd">
 					备&nbsp;&nbsp;&nbsp;&nbsp;注：<input name="remark" id="remark" size="40"/>
 					&nbsp;&nbsp;所属部门：
-					<select  name="dept_id" style="width:100px;">
+					<select  name="deptId" style="width:100px;">
 						   <option value="0">--部门选择--</option>
 						   <c:forEach items="${requestScope.deptList}" var="dept">
 			    				<option value="${dept.id }">${dept.name }</option>

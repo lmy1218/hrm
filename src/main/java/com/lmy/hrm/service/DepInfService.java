@@ -26,4 +26,6 @@ public interface DepInfService {
     void update(DeptInf deptInf);
 
     void deleteDep(List<Integer> deptIds);
+
+    List<DeptInf> findAll();
 }

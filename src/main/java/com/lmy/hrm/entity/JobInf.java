@@ -22,6 +22,6 @@ public class JobInf implements Serializable {
 
     private Integer id;
     private String name;
-    private String remarx;
+    private String remark;
 
 }

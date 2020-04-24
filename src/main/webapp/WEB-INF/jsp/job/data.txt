@@ -1,0 +1,32 @@
+## 展示职位和部门信息
+jobList
+deptList
+
+## 请求分页条件查询时的请求参数
+pageIndex:
+jobId: 2
+name: 玫瑰
+cardId: 12232
+sex: 1
+phone: 15807902521
+deptId: 1
+
+## 新增接收数据
+name: 冯世俊
+cardId: 513021199809232099
+sex: 1
+jobId: 1
+education: 博士
+email: 23434@qq.com
+phone: 15807902521
+tel: 020-22222222
+party: 大牛
+qqNum: 1569851866
+address: 学校
+postCode: 637000
+birthday: 2020-04-06
+race: 汉
+speciality: 软件
+hobby: 酷爱编程
+remark: 技术部牛逼
+deptId: 1
