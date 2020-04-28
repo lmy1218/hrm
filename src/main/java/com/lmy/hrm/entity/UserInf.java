@@ -8,7 +8,10 @@ package com.lmy.hrm.entity;
  */
 
 import lombok.Data;
+import tk.mybatis.mapper.annotation.KeySql;
 
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -19,8 +22,11 @@ import java.util.Date;
  * @date 2020/4/21 11:36
  **/
 @Data
+@Table(name = "user_inf")
 public class UserInf implements Serializable {
 
+    @Id
+    @KeySql(useGeneratedKeys = true)
     private Integer id;
     private String loginname;
     private String username;

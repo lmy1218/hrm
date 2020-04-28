@@ -22,7 +22,39 @@
 	<script src="${ctx }/js/ligerUI/js/plugins/ligerDrag.js" type="text/javascript"></script>
 	<script src="${ctx }/js/ligerUI/js/plugins/ligerResizable.js" type="text/javascript"></script>
 	<script type="text/javascript">
-	    $(function(){
+        function toPage(pageIndex)
+        {
+            $("#pageIndex").attr("value",pageIndex);
+            $("#documentform").attr("action", "${ctx}/documentlist.action");
+            $("#documentform").submit();
+        }
+
+        function move(){}
+
+        function out(){}
+
+        function pagerJump()
+        {
+            var page_size=$('#pager_jump_page_size').val();
+
+            var regu = /^[1-9]\d*$/;
+
+            if (!regu.test(page_size)||page_size < 1 || page_size >'${pageModel.totalPageSum}')
+            {
+                alert('请输入[1-'+ '${pageModel.totalPageSum}' +']之间的页码！');
+            }else
+            {
+                $("#pageIndex").attr("value",page_size);
+                $("#documentform").attr("action", "${ctx}/documentlist.action");
+                $("#documentform").submit();
+            }
+        }
+
+
+
+
+
+		$(function(){
 	    	
 	    	var boxs = $("input[type='checkbox'][id^='box_']");
 	    	/** 给全选按钮绑定点击事件  */
@@ -116,7 +148,10 @@
 		    <tr>
 			  <td class="fftd">
 			  	<form name="documentform" method="post" id="documentform" action="${ctx }/documentlist.action">
-				    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<!-- 配置pageIndex的隐藏域 -->
+					<input type="hidden" name="pageIndex" value="${pageModel.pageIndex}"
+						   id="pageIndex">
+					<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					  <tr>
 					    <td class="font3">
 					    	标题：<input type="text" name="title" />
@@ -168,9 +203,10 @@
 		  </table>
 		</td>
 	  </tr>
-	  <!-- 分页标签 -->
-	  <tr valign="top"><td align="center" class="font3">
-	  </td></tr>
+		<!-- 分页标签 -->
+		<tr valign="top">
+			<td align="center" class="font3"><%@include
+					file="../../page/page.jsp"%></td>
 	</table>
 	<div style="height:10px;"></div>
 </body>

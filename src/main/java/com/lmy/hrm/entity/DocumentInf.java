@@ -8,9 +8,13 @@ package com.lmy.hrm.entity;
  */
 
 import lombok.Data;
+import tk.mybatis.mapper.annotation.KeySql;
 
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
+
 
 /**
  * @author lmy
@@ -19,13 +23,16 @@ import java.sql.Date;
  * @date 2020/4/21 12:37
  **/
 @Data
+@Table(name = "document_inf")
 public class DocumentInf implements Serializable {
 
+    @Id
+    @KeySql(useGeneratedKeys = true)
     private Integer id;
     private String title;
     private String filename;
     private String filetype;
-    private Long fileytes;
+    private byte[] filebytes;
     private String remark;
     private Date createDate;
     private Integer userId;

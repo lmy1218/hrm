@@ -18,8 +18,24 @@ import lombok.Data;
  * @Description 员工返回
  * @date 2020/4/24 13:14
  **/
-@Data
+
 public class ResultEmployDto extends EmployeeInf {
     private JobInf job;
     private DeptInf dept;
+
+    public JobInf getJob() {
+        return job;
+    }
+
+    public void setJob(JobInf job) {
+        this.job = job;
+    }
+
+    public DeptInf getDept() {
+        return dept;
+    }
+
+    public void setDept(DeptInf dept) {
+        this.dept = dept;
+    }
 }

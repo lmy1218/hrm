@@ -40,7 +40,7 @@
 					    async:  true , // 默认设置下，所有请求均为异步请求。如果设置为false，则发送同步请求
 					    // 请求成功后的回调函数。
 					   success :function(data){
-						   if(data.result == "false")
+						   if(!data)
 						   {
 							   $("#cardmsgid").html('身份证已经存在，请重新输入！');
 						   }else

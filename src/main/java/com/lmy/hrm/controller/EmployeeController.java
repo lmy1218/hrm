@@ -7,6 +7,7 @@ package com.lmy.hrm.controller;
  * @version V1.0
  */
 
+import com.alibaba.fastjson.JSONObject;
 import com.lmy.hrm.dto.EmployeeDto;
 import com.lmy.hrm.dto.ResultEmployDto;
 import com.lmy.hrm.entity.DeptInf;
@@ -93,7 +94,8 @@ public class EmployeeController {
     @RequestMapping(value = "getcardid.action", method = RequestMethod.POST)
     @ResponseBody
     public boolean checkCardId(@RequestBody String cardId) {
-
+        JSONObject obj = JSONObject.parseObject(cardId);
+        cardId = (String)obj.get("cardId");
         EmployeeInf employeeInf = employeeServiceImpl.findByCardId(cardId);
         if (employeeInf == null ) {
            return true;
